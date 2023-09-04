@@ -15,9 +15,9 @@ export const usersGETALl = async (req, res) => {
     const userList = await User.find().select("-passwordHash -__v");
 
     if (userList.length == 0) {
-      return res.status(400).json({
-        success: false,
-        message: `user not found`,
+      return res.status(404).json({
+        status: res.statusCode,
+        message: `users not found`,
       });
     }
 

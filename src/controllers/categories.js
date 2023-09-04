@@ -6,7 +6,9 @@ export const categoriesGETALL = async (req, res) => {
     const categoryList = await Category.find().select("-__v");
 
     if (categoryList.length == 0) {
-      return res.status(500).json({ success: false });
+      return res
+        .status(200)
+        .json({ status: res.statusCode, message: `category empty` });
     }
 
     return res.status(200).send(categoryList);
@@ -54,7 +56,7 @@ export const categoriesGETBYID = async (req, res) => {
     const category = await Category.findById(req.params.id).select("-__v");
     if (category == null) {
       return res.status(400).json({
-        success: false,
+        status: res.statusCode,
         message: `category not found`,
       });
     }
@@ -71,7 +73,7 @@ export const categoriesPUT = async (req, res) => {
     const category = await Category.findOneAndUpdate(
       { _id: req.params.id },
       { name, icon, color },
-      { new: true },
+      { new: true }
     ).select("-__v");
 
     if (!category) {

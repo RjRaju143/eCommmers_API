@@ -41,7 +41,10 @@ export const ordersGETBYID = async (req, res) => {
       .select("-__v");
 
     if (!order) {
-      return res.status(500).json({ success: false });
+      return res.status(404).json({
+        status: res.statusCode,
+        message: `orders not found`,
+      });
     }
 
     return res.send(order);
