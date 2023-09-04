@@ -27,6 +27,7 @@ export function authJwt() {
       },
       `${API_URL}/users/login`,
       `${API_URL}/users/register`,
+      `${API_URL}/products`,
     ],
   });
 }
