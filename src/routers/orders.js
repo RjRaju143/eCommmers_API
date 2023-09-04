@@ -1,7 +1,5 @@
-import { logger } from "../middlewares/loggers/logger.js";
-import { Order } from "../modules/order.js";
-import { OrderItem } from "../modules/order-item.js";
-
+import express from "express";
+const router = express.Router();
 import {
   ordersDELET,
   ordersGET,
@@ -12,32 +10,21 @@ import {
   userordersBYID,
   ordersPOST,
 } from "../controllers/orders.js";
-
-import express from "express";
-const router = express.Router();
-
-/// GET http://localhost:8855/api/v1/orders  # Done .
+/// GET http://localhost:8855/api/v1/orders
 router.get("/", ordersGET);
-
-/// GET http://localhost:8855/api/v1/orders/:id7654  # Done .
+/// GET http://localhost:8855/api/v1/orders/:id7654
 router.get("/:id", ordersGETBYID);
-
-/// POST http://localhost:8855/api/v1/orders  # Done .
+/// POST http://localhost:8855/api/v1/orders
 router.post("/", ordersPOST);
-
-/// PUT http://localhost:8855/api/v1/orders/:id12345678  # Done .
+/// PUT http://localhost:8855/api/v1/orders/:id12345678
 router.put("/:id", ordersPUT);
-
-/// DELETE http://localhost:8855/api/v1/orders/ID_9876543  # Done .
+/// DELETE http://localhost:8855/api/v1/orders/ID_9876543
 router.delete("/:id", ordersDELET);
-
-/// GET http://localhost:8855/api/v1/orders/get/totalsales  # Done
+/// GET http://localhost:8855/api/v1/orders/get/totalsales
 router.get("/get/totalsales", ordersTotalSales);
-
-/// GET http://localhost:8855/api/v1/orders/get/count  # Done .
+/// GET http://localhost:8855/api/v1/orders/get/count
 router.get("/get/count", ordersGetCount);
-
-/// GET http://localhost:8855/api/v1/orders/get/userorders/:userid1234567890  # Done .
+/// GET http://localhost:8855/api/v1/orders/get/userorders/:userid1234567890
 router.get("/get/userorders/:userid", userordersBYID);
 
 export default router;

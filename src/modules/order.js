@@ -1,59 +1,63 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const orderSchema = mongoose.Schema({
-    orderItems: [{
+const orderSchema = mongoose.Schema(
+  {
+    orderItems: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'OrderItem',
-        required:true
-    }],
-    shippingAddress1: {
-        type: String,
+        ref: "OrderItem",
         required: true,
+      },
+    ],
+    shippingAddress1: {
+      type: String,
+      required: true,
     },
     shippingAddress2: {
-        type: String,
+      type: String,
     },
     city: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     zip: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     country: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     phone: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     status: {
-        type: String,
-        required: true,
-        default: 'Pending',
+      type: String,
+      required: true,
+      default: "Pending",
     },
     totalPrice: {
-        type: Number,
+      type: Number,
     },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
     dateOrdered: {
-        type: Date,
-        default: Date.now,
+      type: Date,
+      default: Date.now,
     },
-})
+  },
+  { timestamps: true }
+);
 
-orderSchema.virtual('id').get(function () {
-    return this._id.toHexString();
+orderSchema.virtual("id").get(function () {
+  return this._id.toHexString();
 });
 
-orderSchema.set('toJSON', {
-    virtuals: true,
+orderSchema.set("toJSON", {
+  virtuals: true,
 });
 
-export const Order = mongoose.model('Order', orderSchema);
-
+export const Order = mongoose.model("Order", orderSchema);

@@ -2,12 +2,10 @@ import path from "path";
 import multer from "multer";
 import fs from "fs";
 import { logger } from "../middlewares/loggers/logger.js";
-import { fileURLToPath } from "url"; // Import fileURLToPath
-
+import { fileURLToPath } from "url";
 // Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 //// Create a folder
 export const createUploadFolder = (req, res, next) => {
   try {

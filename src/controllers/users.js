@@ -119,6 +119,7 @@ export const usersREGISTER = async (req, res) => {
       street,
       apartment,
       zip,
+      city,
       country,
     } = req.body;
 
@@ -136,6 +137,7 @@ export const usersREGISTER = async (req, res) => {
       street,
       apartment,
       zip,
+      city,
       country,
     });
     await user.save();
