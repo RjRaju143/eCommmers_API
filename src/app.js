@@ -20,7 +20,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const staticPath = path.join(__dirname, "public/uploads");
+const staticPath = path.join(__dirname, "/public/uploads");
 app.use("/public/uploads", express.static(staticPath));
 
 /// jwt handler
